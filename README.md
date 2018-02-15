@@ -1,6 +1,9 @@
 Grails log Viewer
 =========================================
 
+For development logfiles are supposed to be in ./logs/
+
+
 
 TODOs:
 -----------------------------------------
@@ -8,7 +11,6 @@ TODOs:
   * UrlMappings
   * support for large files
   * testcases
-  * User-Interface
+  * views for
     * list
     * show
-
