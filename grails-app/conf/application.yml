@@ -32,6 +32,8 @@ endpoints:
 beans:
     logViewerService:
         logDirectory: ./logs/
+        hideFiles:
+            - catalina.pid
 
 ---
 grails:
