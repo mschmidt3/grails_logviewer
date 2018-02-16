@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         mavenLocal()
-        maven { url "https://repo.grails.org/grails/core" }
+        maven { url "${repo}" }
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
@@ -12,7 +12,7 @@ buildscript {
     }
 }
 
-version "0.2.0"
+version "0.3.0"
 group "logviewer"
 
 apply plugin:"eclipse"
@@ -26,8 +26,11 @@ apply plugin:"org.grails.grails-gsp"
 
 repositories {
     mavenLocal()
-    maven { url "https://repo.grails.org/grails/core" }
+    maven { url "${repo}" }
 }
+
+// build for tomcat 7
+ext['tomcat.version'] = '7.0.59'
 
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-logging"
@@ -90,4 +93,9 @@ tasks.withType(Test) {
 assets {
     minifyJs = true
     minifyCss = true
+}
+
+war {
+    baseName = "logviewer"
+    archiveName = "${baseName}.war"
 }

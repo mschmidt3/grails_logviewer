@@ -9,7 +9,10 @@ class UrlMappings {
             }
         }
 
-        "/"(view:"/index")
+        "/"(controller:"logViewer")
+
+//        "/"(view:"/index")
+//        "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')
     }

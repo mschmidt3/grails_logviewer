@@ -11,6 +11,13 @@ class LogViewerService {
         log.debug("listFiles ${logDirectory}, ${hideFiles}")
 
         def filelist = []
+
+        def dir = new File(logDirectory)
+        if(!dir.exists()){
+            log.info "listFiles: directory ${logDirectory} does not exist"
+            return filelist
+        }
+
         new File(logDirectory).eachFile {
             if( hideFiles.contains( it.name ) ){
                 log.debug "file '$it' is hidden"

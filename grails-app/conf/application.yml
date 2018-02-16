@@ -23,6 +23,9 @@ spring:
         template:
             check-template-location: false
 
+server:
+    port: 8181
+
 # Spring Actuator Endpoints are Disabled by Default
 endpoints:
     enabled: false
@@ -31,7 +34,7 @@ endpoints:
 ---
 beans:
     logViewerService:
-        logDirectory: ./logs/
+        logDirectory: /var/log/tomcat
         hideFiles:
             - catalina.pid
 
@@ -115,9 +118,10 @@ environments:
             url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     production:
         dataSource:
-            dbCreate: none
+            dbCreate: create-drop
+            url: jdbc:h2:mem:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            # dbCreate: update
             # url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
-            url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
             properties:
                 jmxEnabled: true
                 initialSize: 5
